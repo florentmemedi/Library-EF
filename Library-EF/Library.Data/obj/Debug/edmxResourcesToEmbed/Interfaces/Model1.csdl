@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdoNetDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Genre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AuthorID" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="AdoNetDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Authors" EntityType="Self.Author" />
+    <EntitySet Name="Books" EntityType="Self.Book" />
+    <FunctionImport Name="AddAuthor">
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>
